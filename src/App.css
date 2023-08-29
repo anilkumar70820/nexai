@@ -1,38 +1,549 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'Recharge Bold';
+  src: url(./assets/fonts/recharge-cufonfonts-webfont/recharge\ bd.woff)
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none !important;
+  list-style-type: none !important;
+  box-sizing: border-box !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* ========Root Start========= */
+:root {
+  /* FONT-SIZE */
+  --fs-xsm: 16px;
+  --fs-sm: 18px;
+  --fs-xmd: 20px;
+  --fs-md: 24px;
+  --fs-lg: 32px;
+  --fs-xl: 40px;
+  --fs-2xl: 60px;
+  /* FONT COLORS */
+  --text-ffffff: #ffffff;
+  --text-B7B8BA: #B7B8BA;
+  --text-6B7070: #6B7070;
+  --text-0B0A0A: #0B0A0A;
+  --text-02CDCF: #02CDCF;
+  --text-000000: #000000;
+  --text-FCFCFC: #FCFCFC;
+}
+
+.fs_xsm {
+  font-size: var(--fs-xsm);
+}
+
+.fs_sm {
+  font-size: var(--fs-sm);
+}
+
+.fs_xmd {
+  font-size: var(--fs-xmd);
+}
+
+.fs_md {
+  font-size: var(--fs-md);
+}
+
+.fs_lg {
+  font-size: var(--fs-lg);
+}
+
+.fs_xl {
+  font-size: var(--fs-xl);
+}
+
+.fs_2xl {
+  font-size: var(--fs-2xl);
+}
+
+.text_ffffff {
+  color: var(--text-ffffff);
+}
+
+.text_B7B8BA {
+  color: var(--text-B7B8BA);
+}
+
+.text_6B7070 {
+  color: var(--text-6B7070);
+}
+
+.text_0B0A0A {
+  color: var(--text-0B0A0A);
+}
+
+.text_02CDCF {
+  color: var(--text-02CDCF);
+}
+
+.text_000000 {
+  color: var(--text-000000);
+}
+
+.text_FCFCFC {
+  color: var(--text-FCFCFC);
+}
+
+/* ==========Common Classes=========== */
+.ff_poppins {
+  font-family: 'poppins';
+}
+
+.ff_recharge {
+  font-family: 'Recharge Bold';
+}
+
+.bg_040404 {
+  background-color: #040404;
+}
+
+.cursor_pointer {
+  cursor: pointer;
+}
+
+.buttons {
+  padding: 18px 32px;
+  border: none;
+  border-radius: 12px;
+  background-color: #02CDCF;
+  color: var(--text-0B0A0A);
+  font-family: 'Recharge Bold';
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  transition: all 500ms linear;
+}
+
+.buttons:hover {
+  color: #02CDCF;
+  background-color: #000000;
+  box-shadow: 0px 5px 13px 5px #02CDCF;
+}
+
+
+.nav_links {
+  font-size: var(--fs-xsm);
+  font-weight: 400;
+  font-family: 'poppins';
+  color: var(--text-ffffff);
+  position: relative;
+}
+
+.nav_links::after {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #02CDCF 60%, #ffffff 33%);
+  left: 0;
+  bottom: -3px;
+  transform: scale(0);
+  transition: all 500ms linear;
+}
+
+.nav_links:hover {
+  color: #02CDCF;
+}
+
+.nav_links:hover::after {
+  transform: scale(1);
+}
+
+.headings {
+  font-family: 'Recharge Bold';
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--text-02CDCF);
+}
+
+.paragraphs {
+  color: var(--text-ffffff);
+  font-family: 'poppins';
+  font-size: var(--fs-xsm);
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.footer_links {
+  font-family: 'Recharge Bold';
+  font-size: var(--fs-xsm);
+  font-weight: 400;
+  color: var(--text-ffffff);
+  opacity: 0.7;
+}
+
+.footer_links:hover {
+  color: #02CDCF;
+  opacity: 1;
+}
+
+/* ========Preloader======= */
+.preloading_animation {
+  animation: scale 700ms infinite alternate-reverse;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(0.9);
+  }
+
+  100% {
+    transform: scale(1.1);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.preloading_bg {
+  background-image: url(https://nexai.netlify.app/static/media/feature_gif4.e5afb62b806b4829f8fe.gif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* ========Preloader End====== */
+/* =========Back To Top======= */
+.back_top_btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  background-color: #02CDCF;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  position: fixed;
+  right: 1.7%;
+  bottom: 40px;
+  z-index: 1;
+  transition: all 500ms linear;
 }
 
-.App-link {
-  color: #61dafb;
+.back_top_btn:hover {
+  background-color: #ffffff;
+  box-shadow: 1px 1px 5px 5px white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.back_top_btn path {
+  transition: all 500ms linear;
+}
+
+.back_top_btn:hover path {
+  fill: black;
+}
+
+/* ========Back To Top End======= */
+/* =============Common Classes End=========== */
+/* ==========Hero Section============ */
+.hero_bg_img {
+  background-image: url(https://stellar-elf-e551e7.netlify.app/assets/images/hero-bg-img.webp);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+/* =============Unique Feature============ */
+.unique_bg {
+  background-image: url(./assets/images/png/unique_feature_bg.png);
+  background-position: center;
+  border: 1px solid white;
+  border-radius: 18px;
+}
+
+.features_h {
+  height: 550px;
+}
+
+.features_cards {
+  width: 330px;
+  padding: 30px 24px 44px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(252, 252, 252, 0.40);
+  background-color: #ffffff;
+  box-shadow: 1px 1px 24px 1px rgba(0, 0, 0, 0.10);
+  display: inline-block;
+  cursor: pointer;
+  transition: all 300ms linear;
+}
+
+.features_cards:hover {
+  scale: 1.02;
+  box-shadow: 0px 3px 5px 5px #02CDCF;
+
+}
+
+.unique_abs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ==============Unique Feature End=========== */
+/* ==============Blockchain Start============ */
+.blockchain.slick-slider .slick-list {
+  overflow: visible;
+  padding: 0 0% 0 0;
+  position: relative;
+}
+
+.blockchain.slick-slider .slick-list::after {
+  content: ' ';
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  width: 4000px;
+  right: 100%;
+  background-color: black;
+}
+
+/* ==============Blockchain End============== */
+/* ===========Nexai Examples Start================== */
+.ai_examples {
+  width: 340px;
+  height: 220px;
+  padding: 0 43px 0 43px;
+  text-align: center;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  box-shadow: 0px 4px 20px 0px rgba(2, 205, 207, 0.16);
+  transition: all 500ms linear;
+  cursor: pointer;
+}
+
+.ai_examples:hover {
+  background-color: #02CDCF;
+  box-shadow: 0px 4px 20px 0px rgba(255, 255, 255, 0.7);
+
+}
+
+/* ===============Nexai Examples End==================*/
+/* ===========About Ai================= */
+.about_ai_bg {
+  background-image: url(./assets/images/png/about_ai_bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 100% 100%;
+}
+
+/* =============About Ai End============ */
+/* =============Nexai Token============== */
+.timeline_container {
+  position: relative;
+}
+
+.timeline_container::after {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  width: 8px;
+  height: 100%;
+  border-radius: 15px;
+  background-color: #02CDCF;
+}
+
+.h_512 {
+  height: 450px;
+}
+
+.timeline_dots {
+  position: absolute;
+  left: -25px;
+  top: 50%;
+  transform: translatey(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  background-color: #ffffff;
+  z-index: 1;
+}
+
+div::-webkit-scrollbar {
+  display: none;
+}
+
+/* =============Nexai Token End============ */
+/* ==========Footer Start========== */
+.Link {
+  transition: all 500ms linear;
+}
+
+.Link:hover {
+  transform: translateX(-20px);
+}
+
+.social_link {
+  transition: all 500ms linear;
+}
+
+.social_link:hover {
+  transform: translateY(-5px);
+}
+
+.footer_bg {
+  background-image: url(./assets/images/png/footer_bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-size: 100% 100%; */
+  background-position: bottom;
+}
+
+/* ==========Footer End============ */
+/* ==============Ellipse Positions=========== */
+.blur_ellipse {
+  width: 228px;
+  height: 228px;
+  background-color: #02CDCF;
+  filter: blur(196px);
+}
+
+.blur_ellipse_ai {
+  width: 150px;
+  height: 150px;
+  background-color: #02CDCF;
+  filter: blur(70px);
+}
+
+.ai_assistant_ellipse {
+  position: absolute;
+  right: -5%;
+  top: 35%;
+}
+
+.ai_assistant_ellipse2 {
+  position: absolute;
+  left: 30%;
+  bottom: 20%;
+}
+
+.about_ellipse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50% -50%);
+}
+
+.utility_ring {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.ai_token_ring {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.ai_example_ring {
+  position: absolute;
+  left: 0;
+  top: -2%;
+}
+.tokens_ellipse{
+  position: absolute;
+  right: 0;
+  top: 40%;
+}
+.tokens_ellipse2{
+  position: absolute;
+  left: -15%;
+  top: 2%;
+}
+.footer_ellipse {
+  position: absolute;
+  right: 0;
+  top: -5%;
+}
+
+/* ===============Ellipse Positions End================= */
+
+@media (max-width:992px) {
+  .hero_bg_img {
+    background-image: url(https://stellar-elf-e551e7.netlify.app/assets/images/hero-media.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
   }
-  to {
-    transform: rotate(360deg);
+
+  .overflow_hidden {
+    overflow: hidden;
+  }
+
+  .nav_sm {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #252B42;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition: all 500ms linear;
+  }
+
+  .nav_show {
+    right: 0;
+  }
+
+  .overflow_hidden {
+    overflow: hidden;
+  }
+
+  .close_nav {
+    position: absolute;
+    right: 10px;
+    top: 30px;
+    cursor: pointer;
+  }
+
+  :root {
+    /* FONT-SIZE */
+    --fs-2xl: 55px;
+  }
+
+  /* ========Preloader======= */
+  @keyframes scale {
+    0% {
+      transform: scale(1);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+@media (max-width:768px) {
+  .width_sm_100 {
+    width: 100% !important;
+  }
+
+  :root {
+    /* FONT-SIZE */
+    --fs-lg: 28px;
+    --fs-xl: 35px;
+    --fs-2xl: 50px;
+  }
+}
+
+@media (max-width:576px) {
+  :root {
+    /* FONT-SIZE */
+    --fs-lg: 24px;
+    --fs-xl: 30px;
+    --fs-2xl: 35px;
+  }
+}
+
+@media (min-width:768px) {
+  .mt_90 {
+    margin-top: -90px !important;
   }
 }
